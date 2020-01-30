@@ -1,15 +1,14 @@
 package pw.saber.blocktop.listener;
 
-import pw.saber.blocktop.BlockTop;
-import pw.saber.blocktop.utils.PlayerObject;
-import pw.saber.blocktop.utils.Util;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import pw.saber.blocktop.BlockTop;
+import pw.saber.blocktop.utils.PlayerObject;
+import pw.saber.blocktop.utils.Util;
 import pw.saber.blocktop.utils.XMaterial;
 
 import java.util.UUID;

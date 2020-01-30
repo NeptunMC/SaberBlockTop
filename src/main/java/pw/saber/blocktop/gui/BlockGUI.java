@@ -1,9 +1,5 @@
 package pw.saber.blocktop.gui;
 
-import pw.saber.blocktop.BlockTop;
-import pw.saber.blocktop.utils.PlayerObject;
-import pw.saber.blocktop.utils.Util;
-import pw.saber.blocktop.utils.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,42 +9,44 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import pw.saber.blocktop.BlockTop;
+import pw.saber.blocktop.utils.PlayerObject;
+import pw.saber.blocktop.utils.Util;
+import pw.saber.blocktop.utils.XMaterial;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import static pw.saber.blocktop.utils.Util.color;
-
 public class BlockGUI implements Listener {
 
 
     public static void openGUI(Player p) {
-        Inventory i = Bukkit.createInventory(null, 54, Util.color(BlockTop.getInstance().getConfig().getString("gui-name")));
+        Inventory i = Bukkit.createInventory(null, BlockTop.getInstance().getConfig().getInt("Gui.Rows") * 9, Util.color(BlockTop.getInstance().getConfig().getString("Gui.Title")));
         List<Integer> numbers = new ArrayList<>();
         List<UUID> alreadyUUID = new ArrayList<>();
         for (PlayerObject object : Util.playerBlock) {
-            int cane = object.getBlockBroke();
-            numbers.add(cane);
+            int block = object.getBlockBroke();
+            numbers.add(block);
         }
         numbers.sort(Collections.reverseOrder());
         int currentPlace = 1;
-        List<String> defaultLore = BlockTop.getInstance().getConfig().getStringList("head-lore");
-        for (int cane : numbers) {
+        List<String> defaultLore = BlockTop.getInstance().getConfig().getStringList("Head-Item.Lore");
+        for (int block : numbers) {
             for (PlayerObject object : Util.playerBlock) {
                 UUID uuid = object.getUuid();
                 if (!alreadyUUID.contains(uuid)) {
-                    if (object.getBlockBroke() == cane) {
+                    if (object.getBlockBroke() == block) {
                         alreadyUUID.add(uuid);
                         int slot = currentPlace - 1;
                         String name = Bukkit.getOfflinePlayer(uuid).getName();
                         List<String> goodLore = new ArrayList<>();
                         for (String s : defaultLore) {
-                            s = s.replace("%breaks%", cane + "");
+                            s = s.replace("{breaks}", block + "");
                             goodLore.add(Util.color(s));
                         }
-                        ItemStack head = createHead(name, "SKULL_ITEM", 3, BlockTop.getInstance().getConfig().getString("head-name").replace("%place%", currentPlace + "").replace("%name%", name), goodLore, 1);
+                        ItemStack head = createHead(name, "SKULL_ITEM", 3, BlockTop.getInstance().getConfig().getString("Head-Item.Name").replace("{place}", currentPlace + "").replace("{player}", name), goodLore, 1);
                         i.setItem(slot, head);
                         currentPlace++;
                     }
