@@ -1,0 +1,7 @@
+gui-name: '&7BlockTop'
+Block-Item: SUGAR_CANE
+head-name: '&f#&b%place% &7- &e%name%'
+head-lore:
+  - ''
+  - '&7- &aBreaks: &b%breaks%'
+  - ''

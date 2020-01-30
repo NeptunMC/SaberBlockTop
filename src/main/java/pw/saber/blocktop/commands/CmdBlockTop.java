@@ -1,0 +1,38 @@
+package pw.saber.blocktop.commands;
+
+import pw.saber.blocktop.BlockTop;
+import pw.saber.blocktop.gui.BlockGUI;
+import pw.saber.blocktop.utils.Util;
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class CmdBlockTop implements CommandExecutor {
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        Player player = (Player) sender;
+
+        if (!(sender instanceof Player)) return false;
+        if (args.length == 0) {
+            Bukkit.getScheduler().runTaskAsynchronously(BlockTop.instance, () -> BlockGUI.openGUI(player));
+        } else {
+            if (args.length == 1) {
+                if (player.hasPermission("blocktop.reload")) {
+                    if (args[0].equalsIgnoreCase("reload")) {
+                        BlockTop.getInstance().reloadConfig();
+                    } else {
+                        player.sendMessage(Util.color("&c&l[!] &7Try /blocktop reload!"));
+                    }
+                } else {
+                    player.sendMessage(Util.color("&c&l[!] &7You do not have permission to use this command"));
+                }
+            } else {
+                player.sendMessage(Util.color("&c&l[!] &7Try /blocktop reload!"));
+            }
+        }
+        return false;
+    }
+}

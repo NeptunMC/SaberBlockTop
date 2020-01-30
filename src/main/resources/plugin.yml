@@ -1,0 +1,8 @@
+name: SaberBlockTop
+authors:
+  - Driftay
+main: pw.saber.blocktop.BlockTop
+version: ${project.version}
+commands:
+  blocktop:
+    description: Base Command for Looking At Top Block Miners
