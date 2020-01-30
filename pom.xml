@@ -31,7 +31,7 @@
 
     <build>
         <defaultGoal>clean package</defaultGoal>
-        <finalName>CaneTop</finalName>
+        <finalName>SaberBlockTop</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
