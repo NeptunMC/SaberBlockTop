@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Configs {
-    public static File data = new File("plugins/BlockTop/data.yml");
+    public static File data = new File("plugins/SaberBlockTop/data.yml");
     public static FileConfiguration d = YamlConfiguration.loadConfiguration(data);
 
     public static FileConfiguration getData() {

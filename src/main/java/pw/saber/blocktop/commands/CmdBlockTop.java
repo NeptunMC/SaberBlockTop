@@ -13,9 +13,9 @@ public class CmdBlockTop implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player player = (Player) sender;
-
         if (!(sender instanceof Player)) return false;
+
+        Player player = (Player) sender;
 
         if (args.length == 0) Bukkit.getScheduler().runTaskAsynchronously(BlockTop.instance, () -> BlockGUI.openGUI(player));
 
