@@ -1,8 +1,10 @@
-name: SaberBlockTop
+name: NeptunTop
 authors:
+  - Conclure
+contributors:
   - Driftay
 main: pw.saber.blocktop.BlockTop
-version: ${project.version}
+version: 1.0
 commands:
   blocktop:
     description: Base Command for Looking At Top Block Miners
