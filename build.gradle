@@ -1,0 +1,30 @@
+plugins {
+    id "java"
+}
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+
+    maven {
+        url "http://repo.maven.apache.org/maven2"
+    }
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
+    implementation "me.mattstudios.utils:matt-framework-gui:2.0.2"
+
+}
+
+group = "me.conclure.neptun"
+version = "1.0"
+targetCompatibility = sourceCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
